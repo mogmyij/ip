@@ -16,6 +16,7 @@ public class Command {
                 case "event" -> eventCommand(list); 
                 case "mark" -> markingCommand(list);
                 case "unmark" -> markingCommand(list); 
+                case "delete" -> deleteCommand(list);
                 default -> throw new MabException("Hmmmmmm i didn't get that please try again :)''");
             }
         } catch (MabException e) {
@@ -81,6 +82,22 @@ public class Command {
         list.add(newTask);
         System.out.println("\n============================================================================");
         System.out.printf("Added new Event: %s\n", newTask.toString());
+        System.out.println("============================================================================\n");
+    }
+    
+    private void deleteCommand(ArrayList<Task> list) throws MabException{
+        int pos;
+        if (args.isBlank()) throw new MabException("argument cannot be empty");
+        try {pos = Integer.parseInt(args);} 
+        catch(NumberFormatException e){throw new MabException(String.format("%s is not a valid number", args));}
+        if (pos < 1 || pos > list.size()) throw new MabException(String.format("argument cannot be beyond range 1 - %d", list.size()));
+
+        Task t = list.remove(pos - 1);
+        System.out.println("\n============================================================================");
+        System.out.printf("deleted task %s: %s\n", 
+                args, 
+                t.toString()
+                );
         System.out.println("============================================================================\n");
     }
 }
