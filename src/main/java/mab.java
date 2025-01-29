@@ -8,6 +8,7 @@ public class Mab {
     public static void main(String[] args) throws IOException{
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        MabStorage ms = new MabStorage();
 
         String greet = 
             """
@@ -33,14 +34,22 @@ public class Mab {
         String text = "";
         ArrayList<Task> list = new ArrayList<>();
 
-        //chatbot loop
+        try{
+            new LoadCommand().execute(list);
+            //chatbot loop
+        } catch (MabException e) {
+            System.out.println(e.getMessage());
+        }
         while (true) {
             text = reader.readLine();
-
             if (text.equals("bye")) break;
-            Parser.parse(text).run(list);
-
+            try{
+                Parser.parse(text).execute(list);
+            } catch (MabException e) {
+                System.out.println(e.getMessage());
+            }
         }
         System.out.println(goodbye);
+
     }
 }

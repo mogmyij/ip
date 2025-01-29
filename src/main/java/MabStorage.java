@@ -7,8 +7,6 @@ import java.util.ArrayList;
 public class MabStorage{
     private static final String FILE_PATH = "./data/mab_tasks.txt";
     private File f;
-    private Scanner s;
-    private FileWriter fw;
 
     public MabStorage(){
         f = new File(FILE_PATH);
@@ -20,8 +18,6 @@ public class MabStorage{
             if (!f.exists()){
                 f.createNewFile();
             }
-            s = new Scanner(f);
-            fw = new FileWriter(f, true);
         } catch (FileNotFoundException e){
             System.out.println("File not found");
         } catch (java.io.IOException e){
@@ -32,6 +28,7 @@ public class MabStorage{
     public void update(ArrayList<Task> tasks){
         //write to file
         try{
+            FileWriter fw = new FileWriter(f, false);
             for (Task t: tasks ) {
                 String saveString = String.format("%s\n", t.getSaveString());
                 fw.write(saveString);
@@ -50,25 +47,33 @@ public class MabStorage{
 
         //if file does exists
         ArrayList<Task> tasks = new ArrayList<Task>();
-        while (s.hasNext()){
-            String line = s.nextLine();
-            String[] parts = line.split(" \\| ");
-            String type = parts[0];
-            String status = parts[1];
-            String description = parts[2];
-            String date = parts[3];
-            switch (type){ 
-                case ("T"):
-                    tasks.add(new ToDos(description, Boolean.parseBoolean(status)));
-                    break;
-                case ("D"):
-                    tasks.add(new Deadlines(description, Boolean.parseBoolean(status), date));
-                    break;
-                case("E"):
-                    String dateTo = parts[4];
-                    tasks.add(new Events(description, Boolean.parseBoolean(status), date, dateTo));
-                    break;
+        try{
+            Scanner s = new Scanner(f);
+            while (s.hasNext()){
+                String line = s.nextLine();
+                String[] parts = line.split(" \\| ");
+                String type = parts[0];
+                String status = parts[1];
+                String description = parts[2];
+                String date;
+                switch (type){ 
+                    case ("T"):
+                        tasks.add(new ToDos(description, Boolean.parseBoolean(status)));
+                        break;
+                    case ("D"):
+                        date = parts[3];
+                        tasks.add(new Deadlines(description, Boolean.parseBoolean(status), date));
+                        break;
+                    case("E"):
+                        date = parts[3];
+                        String dateTo = parts[4];
+                        tasks.add(new Events(description, Boolean.parseBoolean(status), date, dateTo));
+                        break;
+                }
             }
+            s.close();
+        } catch (FileNotFoundException e){
+            System.out.println("File not found");
         }
 
         return tasks;
