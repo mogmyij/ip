@@ -9,4 +9,8 @@ public class Events extends Task {
     public String toString() {
         return String.format("[%s] %s (from: %s to: %s)", "E", super.toString(), from, to);
     }
+
+    public String getSaveString() {
+        return String.format("E | %s | %s | %s | %s", Boolean.toString(super.getDone()), super.getText(), from, to);
+    }
 }

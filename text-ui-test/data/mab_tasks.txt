@@ -1,0 +1,3 @@
+T | false | testing
+D | false | false |  Sunday
+E | false | testing  |  now  |  then
