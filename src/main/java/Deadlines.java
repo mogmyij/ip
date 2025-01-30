@@ -1,18 +1,27 @@
+import java.time.LocalDateTime;
 
 public class Deadlines extends Task {
-    String deadline;
+    LocalDateTime deadline;
 
-    public Deadlines(String t, boolean d, String dl) {super(t,d); deadline = dl;}
+    public Deadlines(String t, boolean d, String dl) {
+        super(t,d); 
+        System.out.println(dl);
+        deadline = DateTimeUtil.parseDateTime(dl);
+    }
 
     @Override
     public String toString() {
-        return String.format("[%s] %s (by: %s)", "D", super.toString(), deadline);
+        return String.format("[%s] %s (by: %s)", "D", super.toString(), 
+                DateTimeUtil.localDateTimeToString(deadline)
+                );
     }
     public String getDeadline() {
-        return deadline;
+        return deadline.toString();
     }
 
     public String getSaveString(){
-        return String.format("D | %s | %s | %s", Boolean.toString(super.getDone()), super.getDone(), deadline);
+        return String.format("D | %s | %s | %s", Boolean.toString(super.getDone()), super.getDone(), 
+                DateTimeUtil.localDateTimeToString(deadline)
+                );
     }
 }

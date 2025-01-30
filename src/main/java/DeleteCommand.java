@@ -23,5 +23,6 @@ public class DeleteCommand extends Command {
         System.out.println("\n============================================================================");
         System.out.printf("deleted task %s: %s\n", args, t.toString());
         System.out.println("============================================================================\n");
+        new MabStorage().update(list);
     }
 }
