@@ -1,4 +1,8 @@
+package mab.command;
+
 import java.util.ArrayList;
+import mab.task.Task;
+import mab.MabException;
 
 public abstract class Command {
     protected String args;

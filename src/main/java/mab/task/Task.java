@@ -1,3 +1,4 @@
+package mab.task;
 
 public abstract class Task {
     String text;

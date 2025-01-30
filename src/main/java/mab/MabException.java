@@ -1,3 +1,4 @@
+package mab;
 
 public class MabException extends Exception{
 

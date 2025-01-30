@@ -1,5 +1,11 @@
+package mab.command;
+
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import mab.task.Task;
+import mab.task.Deadlines;
+import mab.util.MabStorage;
+import mab.MabException;
 
 // Deadline command
 public class DeadlinesCommand extends Command {
