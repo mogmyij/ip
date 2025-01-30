@@ -1,8 +1,8 @@
 todo testing
 list
-deadline hello /by Sunday
+deadline hello /by 12/12/1212 12:12
 list
-event testing /from now /to then
+event testing /from 12/12/1212 12:12 /to 12-12-1212 12:12
 list
 mark 1
 mark 2

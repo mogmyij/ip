@@ -5,7 +5,6 @@ public class Deadlines extends Task {
 
     public Deadlines(String t, boolean d, String dl) {
         super(t,d); 
-        System.out.println(dl);
         deadline = DateTimeUtil.parseDateTime(dl);
     }
 
@@ -20,7 +19,7 @@ public class Deadlines extends Task {
     }
 
     public String getSaveString(){
-        return String.format("D | %s | %s | %s", Boolean.toString(super.getDone()), super.getDone(), 
+        return String.format("D | %s | %s | %s", Boolean.toString(super.getDone()), super.getText(), 
                 DateTimeUtil.localDateTimeToString(deadline)
                 );
     }
