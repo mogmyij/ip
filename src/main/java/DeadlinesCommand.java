@@ -1,3 +1,4 @@
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 // Deadline command
@@ -19,11 +20,15 @@ public class DeadlinesCommand extends Command {
             throw new MabException("fields cannot be empty, try using: \"deadline [description] /by [date & time]\"");
         }
 
-        Deadlines newTask = new Deadlines(temp[0], false, temp[1]);
-        list.add(newTask);
-        System.out.println("\n============================================================================");
-        System.out.printf("Added new deadline: %s\n", newTask.toString());
-        System.out.println("============================================================================\n");
-        new MabStorage().update(list);
+        try{
+            Deadlines newTask = new Deadlines(temp[0], false, temp[1]);
+            list.add(newTask);
+            System.out.println("\n============================================================================");
+            System.out.printf("Added new deadline: %s\n", newTask.toString());
+            System.out.println("============================================================================\n");
+            new MabStorage().update(list);
+        } catch (DateTimeParseException e) {
+            throw new MabException("Invalid date & time format, try using: YYYY-MM-DD HH:MM");
+        }
     }
 }

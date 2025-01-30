@@ -61,12 +61,12 @@ public class MabStorage{
                         tasks.add(new ToDos(description, Boolean.parseBoolean(status)));
                         break;
                     case ("D"):
-                        date = parts[3];
+                        date = parts[3].trim();
                         tasks.add(new Deadlines(description, Boolean.parseBoolean(status), date));
                         break;
                     case("E"):
-                        date = parts[3];
-                        String dateTo = parts[4];
+                        date = parts[3].trim();
+                        String dateTo = parts[4].trim();
                         tasks.add(new Events(description, Boolean.parseBoolean(status), date, dateTo));
                         break;
                 }

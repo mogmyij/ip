@@ -1,3 +1,4 @@
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 // Event command
@@ -23,11 +24,16 @@ public class EventsCommand extends Command {
             throw new MabException("fields cannot be blank, try using: \"event [description] /from [time] /to [time]\"");
         }
 
-        Events newTask = new Events(description[0], false, fromTo[0], fromTo[1]);
-        list.add(newTask);
-        System.out.println("\n============================================================================");
-        System.out.printf("Added new Event: %s\n", newTask.toString());
-        System.out.println("============================================================================\n");
-        new MabStorage().update(list);
+        try{
+            Events newTask = new Events(description[0], false, fromTo[0], fromTo[1]);
+            list.add(newTask);
+            System.out.println("\n============================================================================");
+            System.out.printf("Added new Event: %s\n", newTask.toString());
+            System.out.println("============================================================================\n");
+            new MabStorage().update(list);
+
+        } catch (DateTimeParseException e) {
+            throw new MabException("Invalid date time format, try using: YYYY-MM-DD HH:MM");
+        }
     }
 }
