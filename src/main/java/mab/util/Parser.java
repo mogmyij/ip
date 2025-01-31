@@ -3,8 +3,21 @@ package mab.util;
 import mab.command.*;
 import mab.MabException;
 
+/**
+ * Converts user input strings into executable command objects.
+ */
 public class Parser {
 
+    /**
+     * Parses raw command input into corresponding Command implementation.
+     * 
+     * @param c Full command input string
+     * @return Executable command object
+     * @throws MabException For unrecognized commands
+     * 
+     * @implSpec Supported commands:
+     * <pre>list, todo, deadline, event, mark, unmark, delete</pre>
+     */
     public static Command parse(String c) throws MabException {
         String[] tokens = c.trim().split("\\s+", 2);//split the command using spaces into 2 parts 
         String comm = tokens[0].toLowerCase(), args = tokens.length > 1 ? tokens[1] : "";

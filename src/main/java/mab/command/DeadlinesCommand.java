@@ -7,12 +7,26 @@ import mab.task.Deadlines;
 import mab.util.MabStorage;
 import mab.MabException;
 
-// Deadline command
+/**
+ * Represents a command to add a new deadline task to the task list.
+ */
 public class DeadlinesCommand extends Command {
+
+    /**
+     * constructor for DeadlinesCommand. 
+     *
+     * @param args description and date and time of the deadline task.
+     */
     public DeadlinesCommand(String args) {
         super(args);
     }
 
+    /**
+     * Adds a new deadline task to the task list.
+     *
+     * @param list list that the deadline will be added to.
+     * @throws MabException when description or date and time is empty or invalid.
+     */
     @Override
     public void execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) {

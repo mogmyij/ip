@@ -7,12 +7,23 @@ import mab.task.Events;
 import mab.util.MabStorage;
 import mab.MabException;
 
-// Event command
+/**
+ * Handles creation of event tasks with start and end times.
+ * Requires command arguments in the format: "description /from YYYY-MM-DD HH:mm /to YYYY-MM-DD HH:mm".
+ *
+ * @param args The full command string following the "event" keyword
+ */ 
 public class EventsCommand extends Command {
     public EventsCommand(String args) {
         super(args);
     }
 
+     /**
+     * Parses event details and adds to task list.
+     *
+     * @param list The target task list for insertion
+     * @throws MabException If arguments violate syntax rules or datetime format
+     */
     @Override
     public void execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) {
