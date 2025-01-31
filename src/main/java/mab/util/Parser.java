@@ -7,7 +7,7 @@ public class Parser {
 
     public static Command parse(String c) throws MabException {
         String[] tokens = c.trim().split("\\s+", 2);//split the command using spaces into 2 parts 
-        String comm = tokens[0].toLowerCase(), args = tokens.length > 1 ? tokens[1] : "";
+        String comm = tokens[0].toLowerCase(), args = tokens.length > 1 ? tokens[1].trim() : "";
 
         return switch (comm) {
             case "list" -> new ListCommand(args);
@@ -17,6 +17,7 @@ public class Parser {
             case "mark" -> new MarkingCommand(args, true);
             case "unmark" -> new MarkingCommand(args, false);
             case "delete" -> new DeleteCommand(args);
+            case "find" -> new FindCommand(args);
             default -> throw new MabException("Hmmmmmm i didn't get that please try again :)");
         };
     }
