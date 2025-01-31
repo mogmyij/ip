@@ -6,13 +6,25 @@ import mab.task.Task;
 import mab.task.ToDos;
 import mab.util.MabStorage;
 
-
-// Todo command
+/**
+ * Handles creation and storage of todo tasks.
+ */
 public class ToDosCommand extends Command {
+    /**
+     * Creates a new todo command processor.
+     * 
+     * @param args The description text for the todo
+     */
     public ToDosCommand(String args) {
         super(args);
     }
 
+    /**
+     * Adds a new todo task to the list and persists storage.
+     * 
+     * @param list The task list to modify
+     * @throws MabException If description is empty
+     */
     @Override
     public void execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) throw new MabException("argument cannot be empty");

@@ -5,12 +5,21 @@ import mab.MabException;
 import mab.util.MabStorage;
 import mab.task.Task;
 
-// Delete command
+/**
+ * Represents a command to delete a task from the list.
+ */
 public class DeleteCommand extends Command {
     public DeleteCommand(String args) {
         super(args);
     }
 
+    /**
+     * Deletes a task from the list based on a 1-based position argument.
+     * The operation will persist changes through the MabStorage update mechanism.
+     *
+     * @param list The task list containing elements to modify
+     * @throws MabException If arguments are invalid or position is out of bounds
+     */
     @Override
     public void execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) throw new MabException("argument cannot be empty");

@@ -10,10 +10,17 @@ import mab.task.ToDos;
 import mab.task.Deadlines;
 import mab.task.Events;
 
+/**
+ * Handles persistent storage of tasks in a file system.
+ * Maintains task data in: {@value #FILE_PATH}
+ */
 public class MabStorage{
     private static final String FILE_PATH = "./data/mab_tasks.txt";
     private File f;
 
+    /**
+     * Initializes storage infrastructure, creating required directories/files.
+     */
     public MabStorage(){
         f = new File(FILE_PATH);
         try{
@@ -31,6 +38,11 @@ public class MabStorage{
         }
     }
 
+     /**
+     * Persists current task state to storage file.
+     * 
+     * @param tasks List of tasks to save
+     */
     public void update(ArrayList<Task> tasks){
         //write to file
         try{
@@ -45,6 +57,17 @@ public class MabStorage{
         }
     }
 
+
+    /**
+     * Loads tasks from persistent storage.
+     * 
+     * @return List of parsed tasks, empty list if no storage file exists
+     * 
+     * @implSpec File format expectations:
+     * <pre>T|status|description  // Todo
+     * D|status|description|date  // Deadline
+     * E|status|description|from|to  // Event</pre>
+     */
     public ArrayList<Task> read(){
         //file does not exist
         if (!f.exists()){

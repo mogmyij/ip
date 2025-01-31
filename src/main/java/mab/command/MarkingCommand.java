@@ -5,14 +5,29 @@ import mab.MabException;
 import mab.util.MabStorage;
 import mab.task.Task;
 
+/**
+ * Handles marking tasks as done or not done based on position argument.
+ */
 public class MarkingCommand extends Command {
     private final boolean markAsDone;
 
+    /**
+     * Creates a new task marking command.
+     * 
+     * @param args The position argument as string
+     * @param markAsDone True to mark as done, false to unmark
+     */
     public MarkingCommand(String args, boolean markAsDone) {
         super(args);
         this.markAsDone = markAsDone;
     }
 
+    /**
+     * Updates task status at specified position and persists changes.
+     * 
+     * @param list The task list to modify
+     * @throws MabException If argument is invalid or position out of bounds
+     */
     @Override
     public void execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) throw new MabException("argument cannot be empty");
