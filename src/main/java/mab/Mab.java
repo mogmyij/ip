@@ -32,6 +32,10 @@ public class Mab {
         ui.showGoodbye();
     }
 
+    public String getResponse(String input) {
+        return input;
+    }
+
     public static void main(String[] args) throws IOException{
         Mab mab = new Mab();
         mab.run();
