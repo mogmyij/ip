@@ -1,10 +1,11 @@
 package mab;
 
-import java.io.IOException;
 import mab.util.MabStorage;
 import mab.util.TaskList;
 import mab.util.Ui;
 import mab.util.Parser;
+
+import java.io.IOException;
 
 public class Mab {
     MabStorage ms;

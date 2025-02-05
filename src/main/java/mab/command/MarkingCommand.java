@@ -1,6 +1,7 @@
 package mab.command;
 
 import java.util.ArrayList;
+
 import mab.MabException;
 import mab.util.MabStorage;
 import mab.task.Task;
@@ -48,6 +49,6 @@ public class MarkingCommand extends Command {
                 list.get(pos - 1).toString(),
                 markAsDone ? "done" : "not done");
         System.out.println("============================================================================\n");
-        new MabStorage().update(list);
+        new MabStorage().read(list);
     }
 }

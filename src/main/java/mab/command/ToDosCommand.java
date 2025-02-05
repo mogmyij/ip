@@ -1,6 +1,7 @@
 package mab.command;
 
 import java.util.ArrayList;
+
 import mab.MabException;
 import mab.task.Task;
 import mab.task.ToDos;
@@ -34,6 +35,6 @@ public class ToDosCommand extends Command {
         System.out.println("\n============================================================================");
         System.out.printf("Added new todo: %s\n", newTask.toString());
         System.out.println("============================================================================\n");
-        new MabStorage().update(list);
+        new MabStorage().read(list);
     }
 }
