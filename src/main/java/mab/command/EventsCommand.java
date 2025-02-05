@@ -2,6 +2,7 @@ package mab.command;
 
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+
 import mab.task.Task;
 import mab.task.Events;
 import mab.util.MabStorage;
@@ -47,7 +48,7 @@ public class EventsCommand extends Command {
             System.out.println("\n============================================================================");
             System.out.printf("Added new Event: %s\n", newTask.toString());
             System.out.println("============================================================================\n");
-            new MabStorage().update(list);
+            new MabStorage().read(list);
 
         } catch (DateTimeParseException e) {
             throw new MabException("Invalid date time format, try using: YYYY-MM-DD HH:MM");

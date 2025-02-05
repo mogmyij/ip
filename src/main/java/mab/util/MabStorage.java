@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+
 import mab.task.Task;
 import mab.task.ToDos;
 import mab.task.Deadlines;
@@ -43,7 +44,7 @@ public class MabStorage{
      * 
      * @param tasks List of tasks to save
      */
-    public void update(ArrayList<Task> tasks){
+    public void read(ArrayList<Task> tasks){
         //write to file
         try{
             FileWriter fw = new FileWriter(f, false);

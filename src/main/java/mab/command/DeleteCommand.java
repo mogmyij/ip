@@ -1,6 +1,7 @@
 package mab.command;
 
 import java.util.ArrayList;
+
 import mab.MabException;
 import mab.util.MabStorage;
 import mab.task.Task;
@@ -37,6 +38,6 @@ public class DeleteCommand extends Command {
         System.out.println("\n============================================================================");
         System.out.printf("deleted task %s: %s\n", args, t.toString());
         System.out.println("============================================================================\n");
-        new MabStorage().update(list);
+        new MabStorage().read(list);
     }
 }
