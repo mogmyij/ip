@@ -37,6 +37,16 @@ public class Deadlines extends Task {
     }
 
     /**
+     * returns the deadline date/time
+     *
+     * @return Deadline date/time
+     */
+    @Override
+    public LocalDateTime getStartDateTime() {
+        return deadline;
+    }
+
+    /**
      * @return Storage format: {@code D | [status] | [description] | [datetime]}
      * @implSpec Uses {@link DateTimeUtil#localDateTimeToString} for datetime formatting
      */

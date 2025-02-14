@@ -1,5 +1,7 @@
 package mab.task;
 
+import java.time.LocalDateTime;
+
 /**
  * Abstract base class representing a task with common attributes.
  * Provides foundation for task management and persistence.
@@ -53,6 +55,13 @@ public abstract class Task {
      * @return String suitable for persistent storage
      */
     public abstract String getSaveString();
+
+    /**
+     * returns the start date and time of the task
+     *
+     * @return Start date and time of task
+     */
+    public abstract LocalDateTime getStartDateTime();
 
     /**
      * @return Display format: {@code [status] [description]}
