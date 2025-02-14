@@ -70,7 +70,7 @@ public class Ui {
      */
     public String readCommand() {
         try {
-            return reader.readLine().trim();
+            return reader.readLine().trim(); //removes trailing spaces so that the DateTime utility can parse the date
         } catch (IOException e) {
             System.out.println("An error occurred while reading the command");
             return "";

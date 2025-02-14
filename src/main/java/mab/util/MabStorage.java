@@ -79,6 +79,7 @@ public class MabStorage{
         ArrayList<Task> tasks = new ArrayList<Task>();
         try{
             Scanner s = new Scanner(f);
+
             while (s.hasNext()){
                 String line = s.nextLine();
                 String[] parts = line.split(" \\| ");
@@ -86,6 +87,7 @@ public class MabStorage{
                 String status = parts[1];
                 String description = parts[2];
                 String date;
+
                 switch (type){ 
                     case ("T"):
                         tasks.add(new ToDos(description, Boolean.parseBoolean(status)));
@@ -101,6 +103,7 @@ public class MabStorage{
                         break;
                 }
             }
+
             s.close();
         } catch (FileNotFoundException e){
             System.out.println("File not found");
