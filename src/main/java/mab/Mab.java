@@ -34,6 +34,7 @@ public class Mab {
     }
 
     public String getResponse(String input) {
+        assert input != null : "input should not be null";
         return input;
     }
 

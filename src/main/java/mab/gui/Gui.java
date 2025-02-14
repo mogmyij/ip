@@ -20,6 +20,7 @@ public class Gui extends Application {
             Scene s = new Scene(root);
             stage.setScene(s);
             loader.<MainWindow>getController().setMab(new Mab());
+            assert stage != null: "javafx stage is null";
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
