@@ -31,6 +31,7 @@ public class Parser {
             case "unmark" -> new MarkingCommand(args, false);
             case "delete" -> new DeleteCommand(args);
             case "find" -> new FindCommand(args);
+            case "sort" -> new SortCommand(args);
             default -> throw new MabException("Hmmmmmm i didn't get that please try again :)");
         };
     }

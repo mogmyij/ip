@@ -39,6 +39,16 @@ public class Events extends Task {
     }
 
     /**
+     * returns the start time of the event
+     *
+     * @return Start time of event
+     */
+    @Override
+    public LocalDateTime getStartDateTime() {
+        return from;
+    }
+
+    /**
      * @return Storage format: {@code E | [status] | [description] | [start] | [end]}
      * @implSpec Uses {@link DateTimeUtil#localDateTimeToString} for time formatting
      */
