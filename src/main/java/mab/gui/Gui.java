@@ -19,6 +19,8 @@ public class Gui extends Application {
             AnchorPane root = loader.load();
             Scene s = new Scene(root);
             stage.setScene(s);
+            stage.setMinWidth(417);
+            stage.setMinHeight(700);
             loader.<MainWindow>getController().setMab(new Mab());
             assert stage != null: "javafx stage is null";
             stage.setTitle("MAB");
