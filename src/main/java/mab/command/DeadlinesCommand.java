@@ -29,7 +29,7 @@ public class DeadlinesCommand extends Command {
      * @throws MabException when description or date and time is empty or invalid.
      */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
+    public String execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) {
             throw new MabException("description cannot be empty, try using: \"deadline [description] /by [date & time]\"");
         }
@@ -44,10 +44,8 @@ public class DeadlinesCommand extends Command {
         try{
             Deadlines newTask = new Deadlines(temp[0], false, temp[1]);
             list.add(newTask);
-            System.out.println("\n============================================================================");
-            System.out.printf("Added new deadline: %s\n", newTask.toString());
-            System.out.println("============================================================================\n");
             new MabStorage().read(list);
+            return String.format("Added new deadline: %s\n", newTask.toString());
         } catch (DateTimeParseException e) {
             throw new MabException("Invalid date & time format, try using: YYYY-MM-DD HH:MM");
         }

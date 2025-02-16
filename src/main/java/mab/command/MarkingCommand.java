@@ -30,7 +30,7 @@ public class MarkingCommand extends Command {
      * @throws MabException If argument is invalid or position out of bounds
      */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
+    public String execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) throw new MabException("argument cannot be empty");
         int pos;
         try {
@@ -43,12 +43,11 @@ public class MarkingCommand extends Command {
         }
 
         list.get(pos - 1).setDone(markAsDone);
-        System.out.println("\n============================================================================");
-        System.out.printf("marked task %s: %s as %s\n", 
-                args, 
-                list.get(pos - 1).toString(),
-                markAsDone ? "done" : "not done");
-        System.out.println("============================================================================\n");
         new MabStorage().read(list);
+        return String.format(
+                        "marked task %s: %s as %s\n",
+                        args, 
+                        list.get(pos - 1).toString(),
+                        markAsDone ? "done" : "not done");
     }
 }

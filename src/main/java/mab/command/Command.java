@@ -24,5 +24,5 @@ public abstract class Command {
      * @param list The list of tasks to perform the command on.
      * @throws MabException If the command fails to execute due to missing or invalid arguments.
     */
-    public abstract void execute(ArrayList<Task> list) throws MabException;
+    public abstract String execute(ArrayList<Task> list) throws MabException;
 }

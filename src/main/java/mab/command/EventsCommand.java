@@ -26,7 +26,7 @@ public class EventsCommand extends Command {
      * @throws MabException If arguments violate syntax rules or datetime format
      */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
+    public String execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) {
             throw new MabException("description cannot be empty, try using: \"event [description] /from [time] /to [time]\"");
         }
@@ -45,11 +45,9 @@ public class EventsCommand extends Command {
         try{
             Events newTask = new Events(description[0], false, fromTo[0], fromTo[1]);
             list.add(newTask);
-            System.out.println("\n============================================================================");
-            System.out.printf("Added new Event: %s\n", newTask.toString());
-            System.out.println("============================================================================\n");
             new MabStorage().read(list);
 
+            return String.format("Added new Event: %s", newTask.toString());
         } catch (DateTimeParseException e) {
             throw new MabException("Invalid date time format, try using: YYYY-MM-DD HH:MM");
         }

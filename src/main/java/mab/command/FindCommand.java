@@ -30,20 +30,18 @@ public class FindCommand extends Command{
      * @implNote Output format matches ListCommand but only shows matches
      */
     @Override
-    public void execute(ArrayList<Task> tasks) throws MabException {
-        Ui out = new Ui();
+    public String execute(ArrayList<Task> tasks) throws MabException {
         if (args.isEmpty()) {
             throw new MabException("Please provide a keyword to search for.");
         }
         String keyword = args.toLowerCase();
-        out.divider();
-        System.out.println("Here are the matching tasks in your list:");
+        String output ="Here are the matching tasks in your list:\n";
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
             if (task.getText().toLowerCase().contains(keyword)) {
-                System.out.printf("%d. %s\n", i + 1, task.toString());
+                output += String.format("%d. %s\n", i + 1, task.toString());
             }
         }
-        out.divider();
+        return output;
     }
 }

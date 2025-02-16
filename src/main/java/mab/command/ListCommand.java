@@ -25,11 +25,11 @@ public class ListCommand extends Command {
      * @throws MabException Never thrown under normal operation
      */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
-        System.out.println("\n============================================================================");
+    public String execute(ArrayList<Task> list) throws MabException {
+        String output = "";
         for (int i = 1; i <= list.size(); i++) {
-            System.out.printf("%d. %s\n", i, list.get(i - 1));
+            output += i + ". " + list.get(i - 1) + "\n";
         }
-        System.out.println("============================================================================\n");
+        return output;
     }
 }

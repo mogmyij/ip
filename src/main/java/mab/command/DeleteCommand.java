@@ -22,7 +22,7 @@ public class DeleteCommand extends Command {
      * @throws MabException If arguments are invalid or position is out of bounds
      */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
+    public String execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) throw new MabException("argument cannot be empty");
         int pos;
         try {
@@ -35,9 +35,7 @@ public class DeleteCommand extends Command {
         }
 
         Task t = list.remove(pos - 1);
-        System.out.println("\n============================================================================");
-        System.out.printf("deleted task %s: %s\n", args, t.toString());
-        System.out.println("============================================================================\n");
         new MabStorage().read(list);
+        return String.format("deleted task %s: %s\n", args, t.toString());
     }
 }

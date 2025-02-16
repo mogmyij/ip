@@ -5,6 +5,7 @@ import mab.util.TaskList;
 import mab.util.Ui;
 import mab.util.Parser;
 
+import javafx.application.Platform;
 import java.io.IOException;
 
 public class Mab {
@@ -20,6 +21,11 @@ public class Mab {
 
     private void run() {
         ui.showGreeting();
+        execute();
+        ui.showGoodbye();
+    }
+
+    public void execute(){
         String text = "";
         while (true) {
             text = ui.readCommand();
@@ -30,12 +36,19 @@ public class Mab {
                 System.out.println(e.getMessage());
             }
         }
-        ui.showGoodbye();
     }
 
     public String getResponse(String input) {
         assert input != null : "input should not be null";
-        return input;
+        try{
+            if (input.equals("bye")) {
+                Platform.exit();
+            }
+            String output = Parser.parse(input).execute(list.getTasks());
+            return output;
+        } catch (MabException e) {
+            return e.getMessage();
+        }
     }
 
     public static void main(String[] args) throws IOException{

@@ -27,14 +27,13 @@ public class ToDosCommand extends Command {
      * @throws MabException If description is empty
      */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
+    public String execute(ArrayList<Task> list) throws MabException {
         if (args.isBlank()) throw new MabException("argument cannot be empty");
         
         ToDos newTask = new ToDos(args, false);
         list.add(newTask);
-        System.out.println("\n============================================================================");
-        System.out.printf("Added new todo: %s\n", newTask.toString());
-        System.out.println("============================================================================\n");
         new MabStorage().read(list);
+
+        return String.format("Added new todo: %s\n", newTask.toString());
     }
 }

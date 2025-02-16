@@ -8,7 +8,7 @@ import mab.task.Task;
 import mab.MabException;
 
 /**
- * Represents a command that the user can input.
+ * sorts the list of tasks by their start date and time.
  *
  * @field args The arguments of the command.
  *
@@ -20,13 +20,13 @@ public class SortCommand extends Command {
     }
 
     /**
-     * Executes the command.
+     * sorts the list of tasks by their start date and time.
      *
      * @param list The list of tasks to perform the command on.
      * @throws MabException If the command fails to execute due to missing or invalid arguments.
     */
     @Override
-    public void execute(ArrayList<Task> list) throws MabException {
+    public String execute(ArrayList<Task> list) throws MabException {
         Collections.sort(list, (t1, t2) -> {
             LocalDateTime time1 = t1.getStartDateTime();
             LocalDateTime time2 = t2.getStartDateTime();
@@ -37,5 +37,6 @@ public class SortCommand extends Command {
 
             return time1.compareTo(time2);
         });
+        return list.toString();
     }
 }
