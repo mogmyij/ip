@@ -37,6 +37,6 @@ public class SortCommand extends Command {
 
             return time1.compareTo(time2);
         });
-        return list.toString();
+        return "I've sorted the list for you!";
     }
 }

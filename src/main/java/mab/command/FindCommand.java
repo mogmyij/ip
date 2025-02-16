@@ -32,7 +32,7 @@ public class FindCommand extends Command{
     @Override
     public String execute(ArrayList<Task> tasks) throws MabException {
         if (args.isEmpty()) {
-            throw new MabException("Please provide a keyword to search for.");
+            throw new MabException("Huh? Please provide a keyword to search for.");
         }
         String keyword = args.toLowerCase();
         String output ="Here are the matching tasks in your list:\n";

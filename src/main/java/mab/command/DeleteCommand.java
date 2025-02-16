@@ -36,6 +36,6 @@ public class DeleteCommand extends Command {
 
         Task t = list.remove(pos - 1);
         new MabStorage().read(list);
-        return String.format("deleted task %s: %s\n", args, t.toString());
+        return String.format("Okay! I''ll delete task %s: %s\n", args, t.toString());
     }
 }

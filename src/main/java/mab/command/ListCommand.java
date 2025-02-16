@@ -26,7 +26,7 @@ public class ListCommand extends Command {
      */
     @Override
     public String execute(ArrayList<Task> list) throws MabException {
-        String output = "";
+        String output = "Here are all the tasks in your list!:\n";
         for (int i = 1; i <= list.size(); i++) {
             output += i + ". " + list.get(i - 1) + "\n";
         }
