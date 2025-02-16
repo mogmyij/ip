@@ -47,7 +47,7 @@ public class EventsCommand extends Command {
             list.add(newTask);
             new MabStorage().read(list);
 
-            return String.format("Added new Event: %s", newTask.toString());
+            return String.format("I Added a new Event: %s. Have fun!", newTask.toString());
         } catch (DateTimeParseException e) {
             throw new MabException("Invalid date time format, try using: YYYY-MM-DD HH:MM");
         }
