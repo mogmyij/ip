@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  */
 public abstract class Task {
     String text;
-    boolean done;
+    boolean isDone;
 
     /**
      * Creates a new generic task.
@@ -17,7 +17,7 @@ public abstract class Task {
      * @param d Initial completion status
      */
     public Task(String t, boolean d) {
-        text = t; done = d;
+        text = t; isDone = d;
     }
 
     /**
@@ -26,7 +26,7 @@ public abstract class Task {
      * @param d New completion status
      */
     public void setDone(boolean d) {
-        done = d;
+        isDone = d;
     }
     /**
      * Updates task description.
@@ -45,8 +45,8 @@ public abstract class Task {
     /**
      * @return Task completion status
      */
-    public boolean getDone() {
-        return done;
+    public boolean getIsDone() {
+        return isDone;
     }
 
     /**
@@ -68,5 +68,5 @@ public abstract class Task {
      * where status is "X" if done, " " if not done
      */
     @Override
-    public String toString() { return String.format("[%s] %s", done ? "X": " ", text); }
+    public String toString() { return String.format("[%s] %s", isDone ? "X": " ", text); }
 }
