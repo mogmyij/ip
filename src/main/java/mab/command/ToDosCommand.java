@@ -32,7 +32,7 @@ public class ToDosCommand extends Command {
         
         ToDos newTask = new ToDos(args, false);
         list.add(newTask);
-        new MabStorage().read(list);
+        new MabStorage().write(list);
 
         return String.format("Added new todo: %s\n", newTask.toString());
     }
