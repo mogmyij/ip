@@ -51,7 +51,7 @@ public class Deadlines extends Task {
      * @implSpec Uses {@link DateTimeUtil#localDateTimeToString} for datetime formatting
      */
     public String getSaveString(){
-        return String.format("D | %s | %s | %s", Boolean.toString(super.getDone()), super.getText(), 
+        return String.format("D | %s | %s | %s", Boolean.toString(super.getIsDone()), super.getText(), 
                 DateTimeUtil.localDateTimeToString(deadline)
                 );
     }

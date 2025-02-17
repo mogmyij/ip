@@ -59,7 +59,7 @@ public class Events extends Task {
     public String getSaveString() {
         return String.format(
                 "E | %s | %s | %s | %s", 
-                Boolean.toString(super.getDone()), super.getText(), 
+                Boolean.toString(super.getIsDone()), super.getText(), 
                 DateTimeUtil.localDateTimeToString(from), 
                 DateTimeUtil.localDateTimeToString(to)
                 );

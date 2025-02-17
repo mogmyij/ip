@@ -35,7 +35,7 @@ public class FindCommand extends Command{
             throw new MabException("Huh? Please provide a keyword to search for.");
         }
         String keyword = args.toLowerCase();
-        String output ="Here are the matching tasks in your list:\n";
+        String output ="";
         for (int i = 0; i < tasks.size(); i++) {
             Task task = tasks.get(i);
             if (task.getText().toLowerCase().contains(keyword)) {
@@ -45,6 +45,6 @@ public class FindCommand extends Command{
         if (output.isBlank()){
             output = "I tried but there are no matching tasks found :P";
         }
-        return output;
+        return String.format("Here are the matching tasks in your list:\n%s", output);
     }
 }

@@ -26,6 +26,9 @@ public class ListCommand extends Command {
      */
     @Override
     public String execute(ArrayList<Task> list) throws MabException {
+        if (list.isEmpty()){
+            return "Sorry! There are no tasks in your list :P";
+        }
         String output = "Here are all the tasks in your list!:\n";
         for (int i = 1; i <= list.size(); i++) {
             output += i + ". " + list.get(i - 1) + "\n";

@@ -42,7 +42,7 @@ public class ToDos extends Task{
     public String getSaveString() { 
         return String.format(
                 "T | %s | %s", 
-                Boolean.toString(super.getDone()), this.getText()
+                Boolean.toString(super.getIsDone()), this.getText()
                 ); 
     }
 }

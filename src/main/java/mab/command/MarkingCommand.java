@@ -10,7 +10,7 @@ import mab.task.Task;
  * Handles marking tasks as done or not done based on position argument.
  */
 public class MarkingCommand extends Command {
-    private final boolean markAsDone;
+    private final boolean isMarkAsDone;
 
     /**
      * Creates a new task marking command.
@@ -20,7 +20,7 @@ public class MarkingCommand extends Command {
      */
     public MarkingCommand(String args, boolean markAsDone) {
         super(args);
-        this.markAsDone = markAsDone;
+        this.isMarkAsDone = markAsDone;
     }
 
     /**
@@ -42,12 +42,12 @@ public class MarkingCommand extends Command {
             throw new MabException(String.format("argument cannot be beyond range 1 - %d", list.size()));
         }
 
-        list.get(pos - 1).setDone(markAsDone);
+        list.get(pos - 1).setDone(isMarkAsDone);
         new MabStorage().write(list);
         return String.format(
                         "Nice! I marked task %s: %s as %s\n",
                         args, 
                         list.get(pos - 1).toString(),
-                        markAsDone ? "done :)" : "not done :p");
+                        isMarkAsDone ? "done :)" : "not done :p");
     }
 }
