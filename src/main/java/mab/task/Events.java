@@ -3,6 +3,7 @@ package mab.task;
 import java.time.LocalDateTime;
 
 import mab.util.DateTimeUtil;
+import mab.MabException;
 
 /**
  * Represents an event with start/end times.
@@ -20,10 +21,13 @@ public class Events extends Task {
      * @param fr Start time string
      * @param to End time string
      */
-    public Events(String t, boolean d, String fr, String to) {
+    public Events(String t, boolean d, String fr, String to) throws MabException {
         super(t,d); 
         this.from = DateTimeUtil.parseDateTime(fr);
         this.to = DateTimeUtil.parseDateTime(to);
+        if (this.from.compareTo(this.to) > 0) {
+            throw new MabException("Start time cannot be after end time.");
+        }
     }
 
     /**

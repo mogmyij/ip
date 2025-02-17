@@ -45,7 +45,7 @@ public class EventsCommand extends Command {
         try{
             Events newTask = new Events(description[0], false, fromTo[0], fromTo[1]);
             list.add(newTask);
-            new MabStorage().read(list);
+            new MabStorage().write(list);
 
             return String.format("I Added a new Event: %s. Have fun!", newTask.toString());
         } catch (DateTimeParseException e) {

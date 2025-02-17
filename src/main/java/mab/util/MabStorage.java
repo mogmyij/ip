@@ -2,6 +2,7 @@ package mab.util;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.time.format.DateTimeParseException;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import mab.task.Task;
 import mab.task.ToDos;
 import mab.task.Deadlines;
 import mab.task.Events;
+import mab.MabException;
 
 /**
  * Handles persistent storage of tasks in a file system.
@@ -44,7 +46,7 @@ public class MabStorage{
      * 
      * @param tasks List of tasks to save
      */
-    public void read(ArrayList<Task> tasks){
+    public void write(ArrayList<Task> tasks){
         //write to file
         try{
             FileWriter fw = new FileWriter(f, false);
@@ -107,8 +109,17 @@ public class MabStorage{
             s.close();
         } catch (FileNotFoundException e){
             System.out.println("File not found");
+        } catch(ArrayIndexOutOfBoundsException e){ 
+            System.out.println("Error reading file, file may be corrupted");
+            return new ArrayList<Task>();
+        } catch (DateTimeParseException e){
+            System.out.println("Error reading file, date parsing error");
+            return new ArrayList<Task>();
+        } catch (MabException e){
+            System.out.println(e.getMessage());
+            return new ArrayList<Task>();
         }
-
+        
         return tasks;
     }
 

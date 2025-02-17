@@ -42,6 +42,9 @@ public class FindCommand extends Command{
                 output += String.format("%d. %s\n", i + 1, task.toString());
             }
         }
+        if (output.isBlank()){
+            output = "I tried but there are no matching tasks found :P";
+        }
         return output;
     }
 }

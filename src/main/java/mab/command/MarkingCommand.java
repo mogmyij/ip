@@ -43,7 +43,7 @@ public class MarkingCommand extends Command {
         }
 
         list.get(pos - 1).setDone(markAsDone);
-        new MabStorage().read(list);
+        new MabStorage().write(list);
         return String.format(
                         "Nice! I marked task %s: %s as %s\n",
                         args, 
