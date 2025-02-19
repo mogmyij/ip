@@ -39,10 +39,10 @@ Mab is a **desktop app for managing tasks and todos, optimized for use via a Com
 
 ## Features
 
-> :information_source: **Notes about the command format:**
+>  ℹ️ **Notes about the command format:**
 > * Words in `UPPER_CASE` are the parameters to be supplied by the user.
 >   e.g. in `todo DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `todo Buy groceries`.
-> * Parameters for dates should be in the format `DD-MM-YYYY`.
+> * Parameters for dates should be in the format `DD-MM-YYYY HH:MM`. If no time is specified, the default time is `00:00`.
 > * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines.
 
 ### Adding a todo: `todo`
