@@ -47,7 +47,7 @@ public class DeadlinesCommand extends Command {
             new MabStorage().write(list);
             return String.format("I Added a new deadline: %s. All the best!\n", newTask.toString());
         } catch (DateTimeParseException e) {
-            throw new MabException("Invalid date & time format, try using: YYYY-MM-DD HH:MM");
+            throw new MabException("Invalid date & time format, try using: DD-MM-YYYY HH:MM");
         }
     }
 }

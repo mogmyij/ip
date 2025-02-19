@@ -49,7 +49,7 @@ public class EventsCommand extends Command {
 
             return String.format("I Added a new Event: %s. Have fun!", newTask.toString());
         } catch (DateTimeParseException e) {
-            throw new MabException("Invalid date time format, try using: YYYY-MM-DD HH:MM");
+            throw new MabException("Invalid date time format, try using: DD-MM-YYYY HH:MM");
         }
     }
 }
