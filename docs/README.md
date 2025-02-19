@@ -41,10 +41,10 @@ Mab is a **desktop app for managing tasks and todos, optimized for use via a Com
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.
+**:information_source: Notes about the command format:**<br>
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `todo DESCRIPTION`, `DESCRIPTION` is a parameter which can be used as `todo Buy groceries`.
-* Parameters for dates should be in the format `DD-MM-YYYY`.
+* Parameters for dates should be in the format `DD-MM-YYYY`.<br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines.
 </div>
 
